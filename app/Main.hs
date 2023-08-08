@@ -15,6 +15,20 @@ lista = [2*x+1 | x<-[0 .. 10], x/=5] -- aplica a todos menos no 5
 foo :: Char -> Int -> (Int, [Char] ) -- (Int, [Char])
 foo x y = (y+9, x:[x])
 
+doubleMe :: Int -> Int 
+doubleMe x = x*2
+
+doubleUs :: Int -> Int -> Int 
+doubleUs x y = doubleMe x + doubleMe y
+
+doubleSmallNumber :: Int -> Int 
+doubleSmallNumber x = if x > 100
+                        then x
+                        else x*2
+
+maximo :: Int -> Int -> Int -> Int 
+maximo x y z = maximum [x,y,z]
+
 -- exercicios
 
 -- 2.1) Gere as listas:
