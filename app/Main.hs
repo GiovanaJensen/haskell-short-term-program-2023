@@ -29,6 +29,21 @@ doubleSmallNumber x = if x > 100
 maximo :: Int -> Int -> Int -> Int 
 maximo x y z = maximum [x,y,z]
 
+set :: [Int] 
+set = [2*x | x <- [0..10], x*2>=12]
+
+set' :: [Int] 
+set' = [x | x <- [50..100], x `mod` 7 == 3]
+
+boomBangs xs = [ if x < 10 then "BOOM" else "BANG!" | x <- xs, odd x]
+
+product' :: [Int] 
+product' = [x*y | x <- [2,5,10], y <- [8,10,11], x*y > 50]
+
+removeUppercase str = [x | x <- str, x `elem` ['a'..'z']]
+
+rightTriangles = [ (a,b,c) | a <- [1..10], b <- [1..10], c <- [1..10], a^2 + b^2 == c^2, b > a,a+b+c == 24]
+
 -- exercicios
 
 -- 2.1) Gere as listas:
