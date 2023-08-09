@@ -78,3 +78,20 @@ f = take 8 (iterate (+9) 1)
      -- 2 4 2  2  4  2  4  2  4  2
 g :: [Int]
 g = [x | x <- [2 .. 30],x `mod` 2 == 0, x `mod` 6 /= 0]
+
+-- 2.2)	 Crie uma função que verifique se o tamanho de uma String é par ou não. Use Bool como retorno
+
+lengthIsEven :: String -> Bool
+lengthIsEven str = even (length str)
+
+-- 2.3)	 Escreva uma função que receba um vetor de strings e retorne uma lista com todos os elementos em ordem reversa
+reverseString :: [String] -> [String]
+reverseString strs = [reverse x | x <- strs]
+
+-- 2.4)	 Escreva uma função que receba um vetor de strings e retorne uma lista com o tamanho de cada string. As palavras de tamanho par devem ser excluídas da resposta
+lengthString :: [String] -> [Int]
+lengthString strs = [length str | str <- strs, lengthIsEven str == True]
+
+-- 2.7) Faça uma função que receba um inteiro e retorne uma tupla,  contendo: o dobro deste número na primeira coordenada, o triplo na segunda, o quádruplo na terceira, o quintuplo na quarta
+tuple :: Int -> (Int, Int, Int, Int)
+tuple x = (x*2,x*3,x*4,x*5)
