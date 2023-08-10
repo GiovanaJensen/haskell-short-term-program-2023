@@ -22,9 +22,24 @@ g (7,7) = 7
 g _ = 0
 
 h :: [Int] -> Int
-h [] = 0
-h (_:[]) = 1
-h (_:x:[]) = 2+x
-h (x:y:z:[]) = 3+x+y+z
+h []           = 0
+h (_:[])       = 1
+h (_:x:[])     = 2+x
+h (x:y:z:[])   = 3+x+y+z
 h (x:_:_:w:[]) = 4+x+w
-h (x:xs) = x
+h (x:xs)       = x
+
+data Pessoa = Fisica String Int 
+            | Juridica String
+
+teste :: Pessoa -> (String, String)
+teste (Fisica nome idade) = ("Nome:" ++ nome, "Idade:" ++ show idade)
+teste (Juridica nome)     = ("Nome:" ++ nome, "Nao ha idade")
+
+-- data Ponto = Ponto Double Double deriving Show
+
+-- Record Syntax
+data Ponto = Ponto {xVal, yVal :: Double} deriving Show
+
+distOrig :: Ponto -> Double
+distOrig (Ponto x y) = sqrt(x^2 + y^2)
