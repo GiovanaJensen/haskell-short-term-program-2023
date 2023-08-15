@@ -43,3 +43,45 @@ data Ponto = Ponto {xVal, yVal :: Double} deriving Show
 
 distOrig :: Ponto -> Double
 distOrig (Ponto x y) = sqrt(x^2 + y^2)
+
+firstLetter :: String -> String
+firstLetter "" = "empty string"
+firstLetter all@(x:xs) = "the first letter of " ++ all ++ " is " ++ [x]
+
+
+-- guards
+bmiTell :: Double -> Double -> String
+bmiTell weight height 
+    -- | weight / height ^ 2 <= 18.5 = "underweight"
+    -- | weight / height ^ 2 <= 25.0 = "normal"
+    -- | weight / height ^ 2 <= 30.0 = "overweight"
+    -- | otherwise   = "super overweight"
+
+    -- | bmi <= 18.5 = "underweight"
+    -- | bmi <= 25.0 = "normal"
+    -- | bmi <= 30.0 = "overweight"
+    -- | otherwise   = "super overweight"
+    -- where bmi = weight / height ^ 2
+
+    -- | bmi <= skinny = "underweight"
+    -- | bmi <= normal = "normal"
+    -- | bmi <= fat    = "overweight"
+    -- | otherwise     = "super overweight"
+    -- where bmi = weight / height ^ 2
+    --       skinny = 18.5
+    --       normal = 25.0
+    --       fat    = 30.0
+
+    | bmi <= skinny = "underweight"
+    | bmi <= normal = "normal"
+    | bmi <= fat    = "overweight"
+    | otherwise     = "super overweight"
+    where bmi = weight / height ^ 2
+          (skinny, normal, fat) = (18.5,25.0,30.0)
+
+initials :: String -> String -> String
+initials firstname@(f:fs) lastname@(l:ls) = [f] ++ "." ++ [l]
+
+calcBmis :: [(Double, Double)] -> [Double]
+calcBmis xs = [bmi w h | (w,h) <- xs]
+    where bmi weight height = weight / height ^ 2 
