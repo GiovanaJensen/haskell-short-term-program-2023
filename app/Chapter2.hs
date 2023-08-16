@@ -85,3 +85,37 @@ initials firstname@(f:fs) lastname@(l:ls) = [f] ++ "." ++ [l]
 calcBmis :: [(Double, Double)] -> [Double]
 calcBmis xs = [bmi w h | (w,h) <- xs]
     where bmi weight height = weight / height ^ 2 
+
+cylinder :: Double -> Double -> Double
+cylinder r h =
+    let sideArea = 2 * pi * r * h
+        topArea  = pi * r ^ 2
+    in sideArea + 2 * topArea
+
+calcBmis' :: [(Double, Double)] -> [Double]
+calcBmis' xs = [bmi | (w,h) <- xs, let bmi = w/h^2]
+
+head' :: [a] -> a
+head' xs = case xs of []    -> error "No head for empty lists!"
+                      (x:_) -> x
+
+describeLists :: [a] -> String
+describeLists ls = "The list is " ++ case ls of []  -> "empty."
+                                                [x] -> "a singleton list"
+                                                xs  -> "a longer list"
+
+-- exercicios
+
+-- 1
+data Pergunta = Sim | Nao deriving Show
+
+pergNum :: Pergunta -> Int
+pergNum Sim = 1
+pergNum Nao = 0
+
+listPergs :: [Pergunta] -> [Int]
+listPergs xs = [pergNum x | x<-xs]
+
+-- and' :: Pergunta -> Pergunta -> String
+-- and' (_,Nao) = "Nao"
+-- and' _ = "Sim"
