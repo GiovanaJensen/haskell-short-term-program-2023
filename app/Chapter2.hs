@@ -116,6 +116,14 @@ pergNum Nao = 0
 listPergs :: [Pergunta] -> [Int]
 listPergs xs = [pergNum x | x<-xs]
 
--- and' :: Pergunta -> Pergunta -> String
--- and' (_,Nao) = "Nao"
--- and' _ = "Sim"
+and' :: Pergunta -> Pergunta -> Pergunta
+and' Sim Sim = Sim
+and' _ _     = Nao
+
+or' :: Pergunta -> Pergunta -> Pergunta
+or' Nao Nao = Nao
+or' _ _     = Sim
+
+not' :: Pergunta -> Pergunta
+not' Sim = Nao
+not' Nao = Sim
