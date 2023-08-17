@@ -127,3 +127,21 @@ or' _ _     = Sim
 not' :: Pergunta -> Pergunta
 not' Sim = Nao
 not' Nao = Sim
+
+--2
+data Temperatura = Celsius | Farenheit | Kelvin
+
+convertCelsius :: Double -> Temperatura -> Double
+convertCelsius temp Celsius   = temp
+convertCelsius temp Farenheit = temp * 9/5 + 32
+convertCelsius temp Kelvin    = temp - 273.15
+
+convertKelvin :: Double -> Temperatura -> Double
+convertKelvin temp Kelvin    = temp
+convertKelvin temp Farenheit =  (temp - 32) * 5/9 + 273.15
+convertKelvin temp Celsius   = temp + 273.15
+
+convertFarenheit :: Double -> Temperatura -> Double
+convertFarenheit temp Farenheit = temp
+convertFarenheit temp Celsius = (temp - 32) * 5/9
+convertFarenheit temp Kelvin = (temp - 273.15) * 9/5 + 32
