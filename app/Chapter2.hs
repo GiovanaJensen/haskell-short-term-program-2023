@@ -5,9 +5,9 @@ data Dia = Segunda | Terca | Quarta | Quinta | Sexta | Sabado | Domingo
 agenda :: Dia -> String
 agenda Domingo = "assistir tv"
 agenda Segunda = "ir pra faculdade"
-agenda Quarta = "assistir jogo"
-agenda Sabado = "jogar"
-agenda _ = "Faculdade"
+agenda Quarta  = "assistir jogo"
+agenda Sabado  = "jogar"
+agenda _       = "Faculdade"
 
 f :: (Int, Int) -> Int
 f (0,0) = 0
@@ -145,3 +145,15 @@ convertFarenheit :: Double -> Temperatura -> Double
 convertFarenheit temp Farenheit = temp
 convertFarenheit temp Celsius = (temp - 32) * 5/9
 convertFarenheit temp Kelvin = (temp - 273.15) * 9/5 + 32
+
+-- 3
+
+data PedraPapelTesoura = Pedra | Papel | Tesoura deriving (Show, Eq)
+
+jogoPedraPapelTesoura :: PedraPapelTesoura -> PedraPapelTesoura -> String
+jogoPedraPapelTesoura escolha1 escolha2 
+    | escolha1 == escolha2 = "empate"
+    | (escolha1 == Pedra && escolha2 == Tesoura) || 
+      (escolha1 == Papel && escolha2 == Pedra) || 
+      (escolha1 == Tesoura && escolha2 == Papel) = "Vencedor: " ++ show escolha1
+    | otherwise = "Vencedor: " ++ show escolha2
